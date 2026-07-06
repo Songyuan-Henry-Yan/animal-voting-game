@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "self-check": "node scripts/self-check.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

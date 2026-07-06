@@ -1,0 +1,1 @@
+const steps=['Welcome','Setup','Issues','Candidates','Campaign Events','Voting Systems','Results','Reflection'];export function StepPath({step,setStep}:{step:number,setStep:(n:number)=>void}){return <nav className="path" aria-label="Forest path progress">{steps.map((s,i)=><button key={s} className={i===step?'active':''} onClick={()=>setStep(i)}>{i+1}. {s}</button>)}</nav>}
