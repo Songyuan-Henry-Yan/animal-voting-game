@@ -5,6 +5,7 @@
     "build": "node scripts/build.mjs",
     "self-check": "node scripts/self-check.mjs"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
 }
