@@ -1,0 +1,1 @@
+export function ForestHeader(){return <header className="hero"><div><p className="eyebrow">Animal Kingdom Election</p><h1>Who Will Care for the Forest?</h1><p className="subtitle">Same voters. Same ballots. Different voting rules. Will the same animal win?</p></div></header>}

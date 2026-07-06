@@ -1,0 +1,14 @@
+export type AgeMode='story'|'classroom'|'lab';export type VotingSystemId='plurality'|'runoff'|'irv'|'approval'|'score'|'star'|'borda'|'condorcet'|'council';
+export type Axis='freedomRules'|'effortSupport'|'stabilityChange'|'localWelcome'|'buildEnvironment'|'choiceServices'|'promiseFacts'|'leadershipCompromise';
+export type AxisScores=Record<Axis,number>;export type MetricScores=Record<'fairness'|'freedom'|'order'|'environment'|'safety'|'happiness'|'evidence'|'inclusion'|'building'|'cooperation',number>;
+export interface Policy extends MetricScores{id:string;issueId:string;text:string;budgetCost:number;helps:string;tradeoff:string;rightsRisk:number;overPromiseRisk:number}
+export interface Candidate{id:string;name:string;species:string;slogan:string;values:string[];strength:string;tradeoff:string;visual:string;axes:AxisScores;policies?:Policy[];trust?:number;visibility?:number}
+export interface Issue{id:string;title:string;icon:string;question:string;story:string;conflicts:string[];connection:string;axis:Axis}
+export interface CampaignEvent{id:string;title:string;icon:string;text:string;issueBoosts:Record<string,number>;axisBoosts?:Partial<AxisScores>;trustCandidateId?:string;trustDelta?:number;visibilityCandidateId?:string;visibilityDelta?:number;factCheck?:boolean;budgetBoost?:boolean}
+export interface VoterGroup{id:string;name:string;icon:string;description:string;issueWeights:Record<string,number>;values:AxisScores;tolerance:number;approvalThreshold:number;scoreStyle:'generous'|'balanced'|'strict'}
+export interface Ballot{voterId:string;voterGroupId:string;ranking:string[];approvals:string[];scores:Record<string,number>;favoriteIssues:string[];utilities?:Record<string,number>}
+export interface ElectionSettings{ageMode:AgeMode;candidateCount:number;issueCount:number;voterCount:number;polarization:'low'|'medium'|'high';eventsOn:boolean;budgetLimits:boolean;charterReminders:boolean;teacherMode:boolean;seed:string;selectedSystems:VotingSystemId[];teachingExample:boolean}
+export interface VotingRound{name:string;counts:Record<string,number>;note:string;eliminatedId?:string;finalists?:string[];transfers?:Record<string,number>}
+export interface ResultMetric{candidateId:string;firstChoicePct:number;approvalPct:number;averageScore:number;pairwiseWins:number;minorityDissatisfactionPct:number}
+export interface ElectionResult{systemId:VotingSystemId;systemName:string;winnerIds:string[];winnerLabel:string;rounds:VotingRound[];counts:Record<string,number>;explanationForKids:string;strengths:string[];weaknesses:string[];metrics:ResultMetric[];tieBreakInfo?:string;why:string;difficulty:number;matrix?:Record<string,Record<string,number>>;seats?:Record<string,number>}
+export interface GameData{settings:ElectionSettings;candidates:Candidate[];issues:Issue[];events:CampaignEvent[];ballots:Ballot[]}
